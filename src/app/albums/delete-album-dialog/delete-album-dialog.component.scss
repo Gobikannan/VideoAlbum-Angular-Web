@@ -1,0 +1,34 @@
+@import "../../../styles/variables.scss";
+
+h1 {
+  font-size: 20px;
+  color: $tvf-black-color;
+}
+
+.confirmation-message {
+  min-height: 50px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.footer-container {
+  min-height: 60px;
+  align-content: center;
+}
+
+.close-icon {
+  cursor: pointer;
+  color: $tvf-input-text-color;
+  &:hover {
+    color: $tvf-red-color;
+  }
+}
+
+.divider {
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.horizontal-separtor {
+  border-bottom: 1px solid $tvf-separator-color;
+}

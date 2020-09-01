@@ -1,0 +1,17 @@
+<!--color hard coded herre for progress bar-->
+<ng-progress [color]="'#ff0000'" [thick]="true" [spinner]="false">
+</ng-progress>
+
+<div class="container-fluid root-app" *ngIf="title">
+  <div class="toolbar" role="banner">
+    <span class="logo-text">{{ title }}</span>
+  </div>
+
+  <router-outlet></router-outlet>
+</div>
+<div *ngIf="!title" class="app-loading-error">
+  <span class="error-text">
+    <i class="fa fa-exclamation-triangle fa-2x"></i> An error occurred while
+    loading application. Please contact admin.
+  </span>
+</div>

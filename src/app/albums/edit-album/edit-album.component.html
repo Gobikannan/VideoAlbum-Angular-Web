@@ -1,0 +1,137 @@
+<mat-card>
+  <mat-card-title>
+    <div class="row">
+      <div class="col">{{ albumId ? "Edit " : "Create New " }} Album</div>
+      <div class="col-auto">
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/albums/list']"
+        >
+          Back to Albums
+        </button>
+      </div>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="mat-elevation-z8 album-form-container">
+      <form [formGroup]="formGroup" class="form" (ngSubmit)="onSubmit()">
+        <mat-form-field class="form-element" hintLabel="Max 200 characters">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            maxlength="200"
+            formControlName="name"
+            placeholder="Enter Album Name"
+          />
+          <mat-hint align="end">{{ name.value?.length || 0 }}/200</mat-hint>
+          <mat-error
+            *ngIf="
+              name.invalid &&
+              (name.dirty || name.touched) &&
+              name.errors?.required
+            "
+          >
+            Name is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element" hintLabel="Max 200 characters">
+          <mat-label>Artist</mat-label>
+          <input
+            matInput
+            maxlength="200"
+            formControlName="artist"
+            placeholder="Enter Artist"
+          />
+          <mat-hint align="end">{{ artist.value?.length || 0 }}/200</mat-hint>
+          <mat-error
+            *ngIf="
+              artist.invalid &&
+              (artist.dirty || artist.touched) &&
+              artist.errors?.required
+            "
+          >
+            Artist is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element" hintLabel="Max 200 characters">
+          <mat-label>Label</mat-label>
+          <input
+            matInput
+            maxlength="200"
+            formControlName="label"
+            placeholder="Enter Label"
+          />
+          <mat-hint align="end">{{ label.value?.length || 0 }}/200</mat-hint>
+          <mat-error
+            *ngIf="
+              label.invalid &&
+              (label.dirty || label.touched) &&
+              label.errors?.required
+            "
+          >
+            Label is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="typeId">
+            <mat-option
+              *ngFor="let albumType of albumTypes"
+              [value]="albumType.id"
+              >{{ albumType.name }}</mat-option
+            >
+          </mat-select>
+          <mat-error
+            *ngIf="
+              typeId.invalid &&
+              (typeId.dirty || typeId.touched) &&
+              typeId.errors?.required
+            "
+          >
+            Type is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-element">
+          <mat-label>Stock</mat-label>
+          <input
+            matInput
+            maxlength="200"
+            formControlName="stock"
+            placeholder="Enter Stock"
+          />
+          <mat-error
+            *ngIf="
+              stock.invalid &&
+              (stock.dirty || stock.touched) &&
+              stock.errors?.required
+            "
+          >
+            Stock is required
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!formGroup.valid"
+        >
+          <i class="fa fa-check" aria-hidden="true"></i> Submit
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          class="ml-2"
+          [routerLink]="['/albums/list']"
+        >
+          <i class="fa fa-times" aria-hidden="true"></i> Cancel
+        </button>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>

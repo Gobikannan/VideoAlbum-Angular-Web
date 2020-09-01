@@ -1,0 +1,48 @@
+<div>
+  <div class="dialog">
+    <div class="row">
+      <div class="col">
+        <h1>{{ title }}</h1>
+      </div>
+      <div class="col-auto text-right">
+        <i
+          class="fa fa-times-circle fa-2x close-icon"
+          title="Close"
+          (click)="closeDialog(false)"
+        ></i>
+      </div>
+    </div>
+    <div class="horizontal-separtor divider"></div>
+    <mat-dialog-content>
+      <div class="row">
+        <div class="col confirmation-message">
+          {{ message }}
+        </div>
+      </div>
+      <div class="horizontal-separtor divider"></div>
+      <div class="row footer-container">
+        <div class="col text-right">
+          <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            (click)="closeDialog(true)"
+            title="Click Yes to delete album"
+          >
+            <i class="fa fa-check" aria-hidden="true"></i> Yes
+          </button>
+          <button
+            type="button"
+            class="ml-2"
+            mat-raised-button
+            color="warn"
+            title="Click No to Close"
+            (click)="closeDialog(false)"
+          >
+            <i class="fa fa-times" aria-hidden="true"></i> No
+          </button>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>
+</div>

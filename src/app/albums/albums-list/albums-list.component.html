@@ -1,0 +1,97 @@
+<mat-card>
+  <mat-card-title>
+    <div class="row">
+      <div class="col">Albums</div>
+      <div class="col-auto">
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/albums/new']"
+        >
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> Create Album
+        </button>
+      </div>
+    </div>
+  </mat-card-title>
+  <mat-card-content>
+    <div class="mat-elevation-z8 list-container">
+      <mat-table [dataSource]="dataSource" matSort>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Name</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element" data-label="name">{{
+            element.name
+          }}</mat-cell>
+        </ng-container>
+
+        <!-- Artist Column -->
+        <ng-container matColumnDef="artist">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Artist</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element" data-label="artist">{{
+            element.artist
+          }}</mat-cell>
+        </ng-container>
+
+        <!-- Label Column -->
+        <ng-container matColumnDef="label">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Label</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element" data-label="label">{{
+            element.label
+          }}</mat-cell>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Type</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element" data-label="type">{{
+            element.type
+          }}</mat-cell>
+        </ng-container>
+
+        <!-- Stock Column -->
+        <ng-container matColumnDef="stock">
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >Stock</mat-header-cell
+          >
+          <mat-cell *matCellDef="let element" data-label="stock">{{
+            element.stock
+          }}</mat-cell>
+        </ng-container>
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              [routerLink]="['/albums/' + element.id + '/edit']"
+            >
+              <i class="fa fa-edit" aria-hidden="true"></i> Edit
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              class="ml-2"
+              (click)="deleteAlbum(element)"
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i> Delete
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSize]="pageSize" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
